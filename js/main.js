@@ -1,11 +1,33 @@
 
+// JS модальное окно
 
-// JS для бургер-меню
+ // Получаем модальное окно
+ var modal = document.getElementById("myModal");
 
-// document.querySelector('.burger').addEventListener('click', function() {
-//     this.classList.toggle('active');
-//     document.querySelector('.nav').classList.toggle('open');
-// })
+  // Показываем модальное окно через 3 секунды после загрузки страницы
+  window.onload = function() {
+    setTimeout(function() {
+        modal.style.display = "block";
+    }, 2000); // 3000 миллисекунд = 3 секунды
+}
+
+ // Получаем элемент <span>, который закрывает модальное окно
+ var span = document.getElementsByClassName("close")[0];
+
+ // Когда пользователь кликает на <span> (x), закрываем модальное окно
+ span.onclick = function() {
+     modal.style.display = "none";
+ }
+
+ // Когда пользователь кликает в любое место вне окна, закрываем его
+ window.onclick = function(event) {
+     if (event.target == modal) {
+         modal.style.display = "none";
+     }
+ }
+
+
+
 
 // JS для увеличения картинок
 
@@ -15,6 +37,7 @@ document.querySelectorAll('.picture').forEach(picture => {
     });
 
 });
+
 
 // JS для стрелочек
 
@@ -97,7 +120,7 @@ arrow7.addEventListener('click', () => {
 });
 
 
-// Смена цвета в блоке Контакты
+// Отмена анимации в блоке Контакты при нажатии на стрелку
 
 const arrow8 = document.querySelector('.arrow7');
 const firstElements8 = document.querySelectorAll('.contacts .title h2');
