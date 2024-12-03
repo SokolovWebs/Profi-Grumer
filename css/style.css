@@ -2,15 +2,56 @@
 
 
 
+ /* Стили для модального окна */
+ .modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed; /* Окно фиксировано по отношению к экрану */
+  z-index: 1000; /* На переднем плане */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Если слишком много контента - прокрутка */
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% сверху и центрирование по горизонтали */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ширина окна */
+  max-width: 600px; /* Максимальная ширина окна */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal p{
+  color: black;
+  text-align: center;
+}
+
+.modal p span{
+  color: #ffd900;
+  text-decoration: underline;
+}
 
 
 
 
-
-
-
-
-
+/* Начало WEB страницы */
 
 
 *{
@@ -29,9 +70,13 @@ body{
   background-repeat: repeat;
 }
 
+section{
+  display: block;
+}
 
 
-/* Стили для бургер-меню */
+/* Header */
+
 .wrapper {
     height: 100%;
     width: 100%;
@@ -45,9 +90,6 @@ body{
     background-color: #eee;
   }
   
-  .open{
-    display: flex !important;
-  }
   
   .header{
     display: flex;
@@ -55,6 +97,10 @@ body{
     justify-content: space-between;
     min-height: 100px;
     padding: 0 40px;
+
+    background-color: #602824;
+    border-bottom: #FFE2B2 solid;
+  
   }
   
   .logo{
@@ -72,148 +118,6 @@ body{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-
-
-  /* Бургер меню если будет нужно */
-
-  /* .nav{
-    display: flex;
-    width: 700px;
-    padding: 0 40px;
-  }
-  
-  .nav ul{
-    width: 100%;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .burger{
-    display: none;
-    position: relative;
-    z-index: 50;
-    align-items: center;
-    justify-content: flex-end;
-    width: 30px;
-    height: 18px;
-
-    margin-right: 3%;
-  }
-  
-  .burger span{
-    height: 2px;
-    width: 80%;
-    transform: scale(1);
-    background-color: #FFE2B2;
-  }
-  
-  .burger::before, .burger::after{
-    content: '';
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    background-color: #FFE2B2;
-    transition: all 0.3s ease 0s;
-  }
-  
-  .burger::before { top: 0 }
-  
-  .burger::after { bottom: 0 }
-  
-  
-  /* Добавляем класс active для анимации иконки бургера 
-  .burger.active span { 
-    transform: scale(0);
-  }
-  
-  .burger.active::before{
-    top: 50%;
-    transform: rotate(-45deg) translate(0, -50%);
-  }
-  
-  .burger.active::after{
-    bottom: 50%;
-    transform: rotate(45deg) translate(0, 50%);
-  }
-  
-  
-  /* При разрешении экрана 900px и ниже, выводим на экран иконку бургера 
-  
-  @media (max-width: 750px) {
-  
-    .burger { display: flex }
-  
-    .nav{
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        top: 0; bottom: 0; left: 0; right: 0;
-        z-index: 50;
-        overflow-y: auto;
-        padding: 50px 40px;
-        background-color: black;
-        animation: burgerAnimation 0.4s;
-    }
-  
-    .nav ul{
-        flex-direction: column;
-        row-gap: 30px;
-    }
-  }
-  
-  @keyframes burgerAnimation {
-    from {opacity: 0}
-    to {opacity: 1}
-  } */
-
-
-
-
-
-
-  /* Header */
-
-.header{
-  background-color: #602824;
-  border-bottom: #FFE2B2 solid;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* .header_holder{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border-bottom: 1px solid #fff;
-    padding-bottom: 30px;           
-} */
-
-
-
-  /* Стили для элемента меню */
-
-/* nav a {
-    color: #FFE2B2;
-    margin-right: 50px;
-    text-decoration: none;
-
-    font-size: 18px;
-
-    transition: color 0.2s ease;
-}
-
-nav a:last-of-type {
-    margin-right: 0;
-}
-
-nav a:hover {
-    color: #fff;
-} */
-
 
 
 
@@ -242,6 +146,11 @@ nav a:hover {
   transition: 0ms;
 }
 
+.btn:hover{
+  scale: 1.1;
+  transition: 0.2s;
+}
+
 
 /* Стили для JS */
 
@@ -250,18 +159,9 @@ nav a:hover {
   transition: 1s;
 }
 
-
 .none, .none2, .none3, .none4, .none5, .none6, .none7{
   display: none;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -296,7 +196,10 @@ h2{
   height: auto;
 
   margin-right: 10%;
+
+  cursor: pointer;
 }
+
 
 @keyframes colorChang {
   0% {
@@ -320,6 +223,12 @@ h2{
 
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
+
+.arrow img:hover, .arrow2 img:hover, .arrow3 img:hover, .arrow4 img:hover, .arrow5 img:hover, .arrow6 img:hover, .arrow7 img:hover{
+  scale: 1.8;
+  transition: 0.1s;
+}
+
 
 .arrow img:active, .arrow2 img:active, .arrow3 img:active, .arrow4 img:active, .arrow5 img:active, .arrow6 img:active, .arrow7 img:active {
   scale: 2;
@@ -362,21 +271,39 @@ p{
   .service .title h2{
     display: inline-block;
   }
-
-
-  /* Стоимость Услуг */
   
 
 
 
 /* Блок Контакты */
 
+.first7{
+  border-bottom: #FFE2B2 solid;
+}
+
 span.tg{
   color: #3DBDFF;
+  text-decoration: underline #3DBDFF;
 }
 
 span.wts{
   color: #92F172;
+  text-decoration: underline #92F172;
+}
+
+span.wts:hover, span.wts:active{
+  color: #c5feb3;
+  text-decoration: underline #c5feb3;
+}
+
+span.tg:hover{
+  color: #9ddeff;
+  text-decoration: underline #9ddeff;
+}
+
+
+.first7 a{
+  text-decoration: none ;
 }
 
 .QRs{
@@ -386,6 +313,12 @@ span.wts{
 .QR{
   margin-bottom: 20px;
 }
+
+.QR:hover{
+  scale: 1.1;
+  transition: 0.2s ease;
+}
+
 .QR img{
   display: block;
   margin-left: auto;
@@ -441,9 +374,19 @@ span.wts{
 
 .text_about a{
   color: #FFE2B2;
+  text-decoration: none;
 }
 
 /* Footer */
+
+footer{
+  display: block;
+  background-color: #742d28;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
 .footer{
   background-color: #742d28;
@@ -459,57 +402,33 @@ p.footer{
 
   text-align: center;
   padding-top: 8px;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
 }
 
+.map{
+  margin-top: 10px;
+  padding-bottom: 30px;
+}
 
+.map {
+  position: relative; /* Устанавливаем позицию для контейнера */
+  width: 100%; /* Занимает всю ширину родительского элемента */
+  padding-top: 56.25%; /* Соотношение сторон 16:9 */
+  /* Для соотношения 4:3 используйте padding-top: 75%; */
+}
 
+.map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Занимает всю ширину */
+  height: 100%; /* Занимает всю высоту */
+  border: none; /* Убираем рамку */
+}
 
 
 
 /* Адаптация */
-
-
-/* Адаптация по высоте */
-
-@media (min-height: 706px) {
-  .footer{
-    height: 100vh;
-  }
-}
-
-@media (max-height: 695px) and (max-width: 410px) {
-  .title{
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-
-  .footer{
-    height: 100vh;
-  }
-}
-
-@media (max-height: 640px) and (max-width: 410px) {
-  .title h2{
-    font-size: 22px;
-  }
-
-  .footer{
-    height: 100vh;
-  }
-}
-
-@media (max-height: 580px) and (max-width: 410px) {
-  .title{
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .footer{
-    height: 100vh;
-  }
-}
-
 
 
 
@@ -544,6 +463,8 @@ p.footer{
   }
 }
 
+/* Map */
+
 
 
 /* Горизонтальный */
@@ -569,13 +490,14 @@ p.footer{
     width: 33%;
   }
 
+  p.footer{
+    font-size: 20px;
+  }
   
 }
 
 @media (min-width: 450px){
-p.footer{
-  font-size: 20px;
-}
+
 .arrow,.arrow2,.arrow3,.arrow4,.arrow5,.arrow6,.arrow7{
   scale: 1.2;
 }
@@ -617,6 +539,7 @@ p.footer{
     padding: 10px 15px;
   }
 
-
-  
 }
+
+
+
